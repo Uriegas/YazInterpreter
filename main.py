@@ -24,7 +24,8 @@ class Lexer():
                 print( (float(self.splited[1]) - 32) / 1.8 )
         elif(self.splited[0] == "RANGE"):
             for num in range(int(self.splited[1]), int(self.splited[2]), int(self.splited[3])):
-                print(num)
+                print(num, end = " ")
+            print()
             print("Its a Range")
         elif(self.splited[0] == "REPEAT"):
             print("Its a repeat")
