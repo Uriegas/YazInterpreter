@@ -17,17 +17,19 @@ class Lexer():
         print(self.string, self.splited)
     def evalute(self):
         if(self.splited[0] == "CONVERT"):
-            print("Its a range")
+            print("Its a convert")
             if(self.splited[2] == "F"):
                 print( 1.8 * float(self.splited[1]) + 32 )
             elif(self.splited[2] == "C"):
                 print( (float(self.splited[1]) - 32) / 1.8 )
         elif(self.splited[0] == "RANGE"):
-            print("Its a convert")
+            for num in range(int(self.splited[1]), int(self.splited[2]), int(self.splited[3])):
+                print(num)
+            print("Its a Range")
         elif(self.splited[0] == "REPEAT"):
             print("Its a repeat")
         elif(self.splited[0] == "END"):
-            return 0
+            exit(self)
 
 mylexer = Lexer()
 while True:
