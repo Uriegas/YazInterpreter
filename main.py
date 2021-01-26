@@ -28,6 +28,9 @@ class Lexer():
             print()
             print("Its a Range")
         elif(self.splited[0] == "REPEAT"):
+            for rep in range(int(self.splited[2]), len(self.splited), 2):
+                print(self.splited[rep - 1].replace('"', '').replace('_', ' ') * int(self.splited[rep]), end = '')
+            print()
             print("Its a repeat")
         elif(self.splited[0] == "END"):
             exit(self)
