@@ -15,17 +15,21 @@ class Interpreter():
     def evalute(self):
         if(self.splited[0] == "CONVERT"):
             if(self.splited[2] == "F"):
-                print( 1.8 * float(self.splited[1]) + 32 )
+                self.result = str(1.8 * float(self.splited[1]) + 32)
             elif(self.splited[2] == "C"):
-                print( (float(self.splited[1]) - 32) / 1.8 )
+                self.result = str((float(self.splited[1]) - 32) / 1.8)
         elif(self.splited[0] == "RANGE"):
+            self.result = ''
             for num in range(int(self.splited[1]), int(self.splited[2]), int(self.splited[3])):
-                print(num, end = " ")
-            print()
+                self.result += str(num) + ' '
+#                self.result = print(num, end = " ")
+#            print()
         elif(self.splited[0] == "REPEAT"):
+            self.result = ''
             for rep in range(2, len(self.splited), 2):
-                print(self.splited[rep - 1].replace('"', '').replace('_', ' ') * int(self.splited[rep]), end = '')
-            print()
+                self.result += str(self.splited[rep - 1].replace('"', '').replace('_', ' ') * int(self.splited[rep]))
+#                print(self.splited[rep - 1].replace('"', '').replace('_', ' ') * int(self.splited[rep]), end = '')
+#            print()
         elif(self.splited[0] == "END"):
             exit(self) ##Aqui debe de regresar al menu
     
@@ -33,6 +37,7 @@ class Interpreter():
     def evaluateString(self, str):
         self.getline(str)
         self.evalute()
+        return self.result
 
 
 ##Este es como el main()
@@ -42,7 +47,8 @@ interpreter = Interpreter()
 ##Ciclo infinito para leer, esto debe de ir en la clase Menu
 while True:
     string = input(">")
-    interpreter.evaluateString(string)
+    a = interpreter.evaluateString(string)
+    print(a)
 
 ##Funcionamiento mas detallado (se puede ocupar)
 ##    interpreter.getline(string)
