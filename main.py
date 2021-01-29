@@ -22,14 +22,10 @@ class Interpreter():
             self.result = ''
             for num in range(int(self.splited[1]), int(self.splited[2]), int(self.splited[3])):
                 self.result += str(num) + ' '
-#                self.result = print(num, end = " ")
-#            print()
         elif(self.splited[0] == "REPEAT"):
             self.result = ''
             for rep in range(2, len(self.splited), 2):
                 self.result += str(self.splited[rep - 1].replace('"', '').replace('_', ' ') * int(self.splited[rep]))
-#                print(self.splited[rep - 1].replace('"', '').replace('_', ' ') * int(self.splited[rep]), end = '')
-#            print()
         elif(self.splited[0] == "END"):
             exit(self) ##Aqui debe de regresar al menu
     
@@ -49,9 +45,4 @@ while True:
     string = input(">")
     a = interpreter.evaluateString(string)
     print(a)
-
-##Funcionamiento mas detallado (se puede ocupar)
-##    interpreter.getline(string)
-##    interpreter.print()
-##    interpreter.evalute()
     
