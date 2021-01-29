@@ -1,5 +1,6 @@
 #Class YazInterpreter
 import os;
+
 ##Clase del Interprete: Acepta un comando 'x' con arguementos...
 class Interpreter():
     ##Almacena un string en el interprete y hace una lista de esa string
@@ -22,16 +23,12 @@ class Interpreter():
             self.result = ''
             for num in range(int(self.splited[1]), int(self.splited[2]), int(self.splited[3])):
                 self.result += str(num) + ' '
-#                self.result = print(num, end = " ")
-#            print()
         elif(self.splited[0] == "REPEAT"):
             self.result = ''
             for rep in range(2, len(self.splited), 2):
                 self.result += str(self.splited[rep - 1].replace('"', '').replace('_', ' ') * int(self.splited[rep]))
-#                print(self.splited[rep - 1].replace('"', '').replace('_', ' ') * int(self.splited[rep]), end = '')
-#            print()
         elif(self.splited[0] == "END"):
-            self.result = False ##Aqui debe de regresar al menu
+            self.result = False
     
     ##Recibe un string y devuelve el resultado del comando (Hace las 2 funciones de arriba juntas)
     def evaluateString(self, str):
@@ -40,18 +37,23 @@ class Interpreter():
         return self.result
 
 
-class Menu:
+class YazLang:
     def __init__(self):
         self.interpreter = Interpreter()
     def menu(self):
+        print("Welcome to the YazInterpreter!")
+        print("You may interpret a YazLang program and output")
+        print("the results to a .txt file or enter console YazInteractions")
+        print("mode to run single commands of YazLang.")
+        print()
         while(True):
-            print("Este es el menu chicas")
-            self.select = int(input("Elija (1)CLI, (2)TXT, 3(Salir)"))
-            if(self.select == 1):
+            self.select = input("(C)onsole YazInteractions, (I)nterpret .yzy program, (Q)uit? ")
+            if(self.select == 'C' or self.select == 'c'):
+                print("YazInteractions session. Type END to exit.")
                 self.CLI()
-            elif(self.select == 2):
-                self.TXT()
-            elif(self.select == 3):
+            elif(self.select == 'I' or self.select == 'i'):
+                self.fileconvertion()
+            elif(self.select == 'Q' or self.select == 'q'):
                 break
     def CLI(self):
         ##Ciclo infinito para leer, esto debe de ir en la clase Menu
@@ -62,29 +64,26 @@ class Menu:
                 break
             print(self.a)
 
-    def TXT(self):
+    def fileconvertion(self):
         archivo = File()
-        archivo.ReqFile()
+        archivo.convert()
 
 
-class File(Menu):
-    def ReqFile(self):
-        self.f = input("Ingrese el nombre del archivo")
+class File(YazLang):
+    def convert(self):
+        self.f = input("Input file name: ")
         while not (os.path.exists(self.f)):
-            self.f = input("No se encontro el archivo, intente de nuevo:")
-
+            self.f = input("File not found. Try again: ")
+        
         self.file = open(self.f)
-        self.out = open('out_file.txt', 'w')
+        self.f = input("Output file name: ")
+        self.out = open(self.f, 'w')
+        print("YazLang program interpreted and output to .txt file!\n")
 
         for command in self.file:
             self.a = self.interpreter.evaluateString(command)
             self.out.write(self.a + '\n')
 
 
-mymenu = Menu()
+mymenu = YazLang()
 mymenu.menu()
-##Funcionamiento mas detallado (se puede ocupar)
-##    interpreter.getline(string)
-##    interpreter.print()
-##    interpreter.evalute()
-    
