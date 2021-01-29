@@ -55,7 +55,6 @@ class Menu:
                 break
     def CLI(self):
         ##Ciclo infinito para leer, esto debe de ir en la clase Menu
-        
         while True:
             self.string = input(">")
             self.a = self.interpreter.evaluateString(self.string)
@@ -64,7 +63,9 @@ class Menu:
             print(self.a)
 
     def TXT(self):
-        print("Esto todavia no jala")
+        archivo = File()
+        archivo.ReqFile()
+
 
 class File(Menu):
     def ReqFile(self):
@@ -77,12 +78,9 @@ class File(Menu):
 
         for command in self.file:
             self.a = self.interpreter.evaluateString(command)
-            print(self.a)
             self.out.write(self.a + '\n')
 
 
-miarchivo = File()
-miarchivo.ReqFile()
 mymenu = Menu()
 mymenu.menu()
 ##Funcionamiento mas detallado (se puede ocupar)
