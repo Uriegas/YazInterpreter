@@ -5,11 +5,11 @@ class Interpreter():
     ##Almacena un string en el interprete y hace una lista de esa string
     def getline(self, str):
         self.string = str
-        self.splited = string.split()
+        self.splited = self.string.split()
 
     ##Para imprimir que tiene dentro la clase
     def print(self):
-        print(self.string, self.splited)
+        print(self.string, self.splited, self.result)
 
     ##Da el resultado del comando utilizado
     def evalute(self):
@@ -31,7 +31,7 @@ class Interpreter():
 #                print(self.splited[rep - 1].replace('"', '').replace('_', ' ') * int(self.splited[rep]), end = '')
 #            print()
         elif(self.splited[0] == "END"):
-            exit(self) ##Aqui debe de regresar al menu
+            self.result = False ##Aqui debe de regresar al menu
     
     ##Recibe un string y devuelve el resultado del comando (Hace las 2 funciones de arriba juntas)
     def evaluateString(self, str):
@@ -40,16 +40,34 @@ class Interpreter():
         return self.result
 
 
-##Este es como el main()
-##Crea el interprete de la clase interprete
-interpreter = Interpreter()
+class Menu:
+    def __init__(self):
+        self.interpreter = Interpreter()
+    def menu(self):
+        while(True):
+            print("Este es el menu chicas")
+            self.select = int(input("Elija (1)CLI, (2)TXT, 3(Salir)"))
+            if(self.select == 1):
+                self.CLI()
+            elif(self.select == 2):
+                self.TXT()
+            elif(self.select == 3):
+                break
+    def CLI(self):
+        ##Ciclo infinito para leer, esto debe de ir en la clase Menu
+        
+        while True:
+            self.string = input(">")
+            self.a = self.interpreter.evaluateString(self.string)
+            if(self.a == False):
+                break
+            print(self.a)
 
-##Ciclo infinito para leer, esto debe de ir en la clase Menu
-while True:
-    string = input(">")
-    a = interpreter.evaluateString(string)
-    print(a)
+    def TXT(self):
+        print("Esto todavia no jala")
 
+mymenu = Menu()
+mymenu.menu()
 ##Funcionamiento mas detallado (se puede ocupar)
 ##    interpreter.getline(string)
 ##    interpreter.print()
