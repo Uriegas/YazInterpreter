@@ -73,12 +73,16 @@ class File(Menu):
             self.f = input("No se encontro el archivo, intente de nuevo:")
 
         self.file = open(self.f)
-        self.out = open("out_file.txt", 'r')
+        self.out = open('out_file.txt', 'w')
 
         for command in self.file:
-            self.out(self.interpreter.evaluateString(command))
+            self.a = self.interpreter.evaluateString(command)
+            print(self.a)
+            self.out.write(self.a + '\n')
 
 
+miarchivo = File()
+miarchivo.ReqFile()
 mymenu = Menu()
 mymenu.menu()
 ##Funcionamiento mas detallado (se puede ocupar)
