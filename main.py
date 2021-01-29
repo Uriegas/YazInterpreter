@@ -14,9 +14,9 @@ class Interpreter():
     ##Da el resultado del comando utilizado
     def evalute(self):
         if(self.splited[0] == "CONVERT"):
-            if(self.splited[2] == "F"):
+            if(self.splited[2].upper() == "F"):
                 self.result = str(1.8 * float(self.splited[1]) + 32)
-            elif(self.splited[2] == "C"):
+            elif(self.splited[2].upper() == "C"):
                 self.result = str((float(self.splited[1]) - 32) / 1.8)
         elif(self.splited[0] == "RANGE"):
             self.result = ''
@@ -26,8 +26,10 @@ class Interpreter():
             self.result = ''
             for rep in range(2, len(self.splited), 2):
                 self.result += str(self.splited[rep - 1].replace('"', '').replace('_', ' ') * int(self.splited[rep]))
-        elif(self.splited[0] == "END"):
+        elif(self.splited[0].upper() == "END"):
             exit(self) ##Aqui debe de regresar al menu
+        else:
+            self.result = ''
     
     ##Recibe un string y devuelve el resultado del comando (Hace las 2 funciones de arriba juntas)
     def evaluateString(self, str):
