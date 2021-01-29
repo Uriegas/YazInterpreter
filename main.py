@@ -1,5 +1,5 @@
 #Class YazInterpreter
-
+import os;
 ##Clase del Interprete: Acepta un comando 'x' con arguementos...
 class Interpreter():
     ##Almacena un string en el interprete y hace una lista de esa string
@@ -65,6 +65,19 @@ class Menu:
 
     def TXT(self):
         print("Esto todavia no jala")
+
+class File(Menu):
+    def ReqFile(self):
+        self.f = input("Ingrese el nombre del archivo")
+        while not (os.path.exists(self.f)):
+            self.f = input("No se encontro el archivo, intente de nuevo:")
+
+        self.file = open(self.f)
+        self.out = open("out_file.txt", 'r')
+
+        for command in self.file:
+            self.out(self.interpreter.evaluateString(command))
+
 
 mymenu = Menu()
 mymenu.menu()
