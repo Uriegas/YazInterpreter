@@ -13,7 +13,7 @@ class Interpreter():
         print(self.string, self.splited, self.result)
 
     ##Da el resultado del comando utilizado
-    def evalute(self):
+    def evaluate(self):
         if(self.splited[0] == "CONVERT"):
             if(self.splited[2].upper() == "F"):
                 self.result = str(1.8 * float(self.splited[1]) + 32)
@@ -29,11 +29,13 @@ class Interpreter():
                 self.result += str(self.splited[rep - 1].replace('"', '').replace('_', ' ') * int(self.splited[rep]))
         elif(self.splited[0].upper() == "END"):
             self.result = False
+        else:
+            self.result = ''
     
     ##Recibe un string y devuelve el resultado del comando (Hace las 2 funciones de arriba juntas)
     def evaluateString(self, str):
         self.getline(str)
-        self.evalute()
+        self.evaluate()
         return self.result
 
 
