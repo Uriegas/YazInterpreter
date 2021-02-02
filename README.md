@@ -10,7 +10,19 @@ Reporte:
 ## Funcionamiento  
 
 ### Interprete:  
-Clase que recibe comandos y devuelve el resultado.  
+Clase que recibe comandos y devuelve el resultado.
+
+Tiene 3 atributos:
+1. **string**. El comando que a evaluar en formato string (ej. CONVERT 80 F)
+2. **splited**. Lista con las palabras separadas del string (ej.["CONVERT", "80", "F"])
+3. **result**. Resultado despues de evaluar el comando ingresado (ej. 176)  
+
+Tiene 4 métodos:
+1. **getline**. Guarda una string y a la vez hace una lista con las palabras de esa string.
+2. **print**. Imprime la string y la lista
+3. **evalute**. Trabaja con la lista, tiene 5 ifs, donde evalua la primer palabra de la lista (CONVERT, RANGE REPEAT, END), en cada caso realiza las operaciones (converti temperatura, ciclo for, repetir palabras o salir del programa) y guarda el resultado de la operacion en la variable result.
+4. **evaluateString**. Es solo la mezcla de getline y evaluate, literal, nada mas llama a las 2 y devuelve el valor en la variable result.  
+
 Ejemplo:  
 * Comando: `CONVERT 17 C`  
 * Resultado: `-8.333`  
