@@ -5,7 +5,7 @@ class Interpreter():
     ##Almacena un string en el interprete y hace una lista de esa string
     def getline(self, str):
         self.string = str
-        self.splited = string.split()
+        self.splited = self.string.split()
 
     ##Para imprimir que tiene dentro la clase
     def print(self):
