@@ -1,3 +1,4 @@
 .replit
 *.yzy
 *.txt
+__pycache__
