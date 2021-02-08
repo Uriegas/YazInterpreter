@@ -18,9 +18,15 @@ class Archivos():
 
     def menu(self):
 
-        nameEntrada = input("Teclee el nombre del archivo que desea abrir. [No se olvide de poner la extensión.] \n >>")
+        nameEntrada = input("Input file name \n>>")
 
-        nameSalida = input("Teclee el nombre del archivo en el que desea escrribir. [No se olvide de poner la extensión.] \n >>")
+        while nameEntrada.find('.yzy') == -1:
+            nameEntrada = input("File not found. Try again: \n>>")
+
+        nameSalida = input("Output file name:  \n >>")
+
+        while nameSalida.find('.txt') == -1:
+            nameSalida = input("File not found. Try again: \n>>")
 
         with open(nameEntrada,"r") as f:
             lines = f.readlines()
@@ -28,6 +34,6 @@ class Archivos():
         for s in lines:
             #print(s)
             c = self.interpreter.evaluateString(s)
-            archivo2 = self.definir_archivo(nombreSalida,"a")
+            archivo2 = self.definir_archivo(nameSalida,"a")
             c= c + "\n"
             self.escritura_archivo(archivo2,c)
