@@ -3,10 +3,15 @@ Proyecto Universidad Politécnica de Victora
 Profesor: Marco Aurelio Nuño Maganda  
 Materia: Fundamentos de Programación Orientada a Objetos  
 Basado en: [YazInterpreter](https://courses.cs.washington.edu/courses/cse142/20wi/homework/6/assign6.pdf)  
-Reporte:
-* [Ver](https://www.overleaf.com/read/ybxgbvpctzbg)   
+Reporte en: [Overleaf](https://www.overleaf.com/read/ybxgbvpctzbg)   
 
-**NOTA**: Se incluye el archivo [archivo.yzy](archivo.yzy) para realizar las pruebas de lectura de archivos.
+## Nota:
+Se incluye el archivo [archivo.yzy](archivo.yzy) para realizar las pruebas de lectura de archivos.  
+
+## Correr  
+
+Correr con: `python main.py`
+
 ## Funcionamiento  
 
 ### Interprete:  
